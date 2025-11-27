@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Chess Go Go</title>
+  <style>
+    body {
+      font-family: Roboto, sans-serif;
+      background: #C9DBF000;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .subtitle {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #555;
+      font-size: 10px;
+    }
+    .section-title {
+      font-size: 12px;
+      margin: 20px 0 10px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 6px;
+    }
+    ul.pricelist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul.pricelist li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #fafafa;
+      margin-bottom: 6px;
+      border: 1px solid #eee;
+      font-size: 10px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.05s;
+    }
+    ul.pricelist li:nth-child(odd) {
+      background: #fefefe;
+    }
+    ul.pricelist li:hover {
+      background: #e9f3ff;
+      transform: translateY(-1px);
+    }
+    .item-name {
+      font-weight: 500;
+    }
+    .item-code {
+      display: none;
+    }
+    .item-price {
+      font-weight: 600;
+      color: #007bff;
+      white-space: nowrap;
+    }
+
+    /* FORM ORDER */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    form label {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    form input,
+    form select {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #dddddd;
+      font-size: 10px;
+    }
+    form button[type="submit"] {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #4E5E7D;
+      color: #ffffff;
+      font-size: 13px;
+    }
+
+    .qty-wrapper {
+      display: inline-flex,
+      align-items: center;
+      gap: 6px;
+    }
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid #cccccc;
+      background: #f5f5f5;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-btn:active {
+      background: #e0e0e0;
+    }
+    #orderQty {
+      width: 48px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Magic Chess Go Go</h1>
+    <div class="subtitle">Proses via User ID</div>
+
+    <!-- INDONESIA -->
+    <div class="section">
+      <div class="section-title">Indonesia</div>
+      <ul class="pricelist">
+        <li data-item="100 (50+50) Diamonds - First Top Up (ID)" data-price="14620">
+          <span class="item-name">100 (50+50) Diamonds - First Top Up (ID)<span class="item-code">MCGG_ID_100FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="Weekly Card (ID)" data-price="33780">
+          <span class="item-name">Weekly Card (ID)<span class="item-code">MCGG_ID_WC</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="300 (150+150) Diamonds - First Top Up (ID)" data-price="41586">
+          <span class="item-name">300 (150+150) Diamonds - First Top Up (ID)<span class="item-code">MCGG_ID_300FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="500 (250+250) Diamonds - First Top Up (ID)" data-price="69334">
+          <span class="item-name">500 (250+250) Diamonds - First Top Up (ID)<span class="item-code">MCGG_ID_500FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="1000 (500+500) Diamonds - First Top Up (ID)" data-price="139414">
+          <span class="item-name">1000 (500+500) Diamonds - First Top Up (ID)<span class="item-code">MCGG_ID_1000FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MALAYSIA -->
+    <div class="section">
+      <div class="section-title">Malaysia</div>
+      <ul class="pricelist">
+        <li data-item="14 (13+1) Diamonds (MY)" data-price="5427">
+          <span class="item-name">14 (13+1) Diamonds (MY)<span class="item-code">MCGG_MY_14</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="42 (38+4) Diamonds (MY)" data-price="14341">
+          <span class="item-name">42 (38+4) Diamonds (MY)<span class="item-code">MCGG_MY_42</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="100 (50+50) Diamonds - First Top Up (MY)" data-price="20556">
+          <span class="item-name">100 (50+50) Diamonds - First Top Up (MY)<span class="item-code">MCGG_MY_100FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="70 (64+6) Diamonds (MY)" data-price="22574">
+          <span class="item-name">70 (64+6) Diamonds (MY)<span class="item-code">MCGG_MY_70</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="Weekly Card (MY)" data-price="31904">
+          <span class="item-name">Weekly Card (MY)<span class="item-code">MCGG_MY_WC</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="140 (127+13) Diamonds (MY)" data-price="45145">
+          <span class="item-name">140 (127+13) Diamonds (MY)<span class="item-code">MCGG_MY_140</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="300 (150+150) Diamonds - First Top Up (MY)" data-price="58237">
+          <span class="item-name">300 (150+150) Diamonds - First Top Up (MY)<span class="item-code">MCGG_MY_300FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="314 (254+30) Diamonds (MY)" data-price="90289">
+          <span class="item-name">314 (254+30) Diamonds (MY)<span class="item-code">MCGG_MY_314</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="500 (250+250) Diamonds - First Top Up (MY)" data-price="97212">
+          <span class="item-name">500 (250+250) Diamonds - First Top Up (MY)<span class="item-code">MCGG_MY_500FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="355 (317+38) Diamonds (MY)" data-price="113012">
+          <span class="item-name">355 (317+38) Diamonds (MY)<span class="item-code">MCGG_MY_355</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="429 (383+46) Diamonds (MY)" data-price="135585">
+          <span class="item-name">429 (383+46) Diamonds (MY)<span class="item-code">MCGG_MY_429</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="1000 (500+500) Diamonds - First Top Up (MY)" data-price="194573">
+          <span class="item-name">1000 (500+500) Diamonds - First Top Up (MY)<span class="item-code">MCGG_MY_1000FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="716 (633+83) Diamonds (MY)" data-price="225873">
+          <span class="item-name">716 (633+83) Diamonds (MY)<span class="item-code">MCGG_MY_716</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="1084 (940+144) Diamonds (MY)" data-price="338884">
+          <span class="item-name">1084 (940+144) Diamonds (MY)<span class="item-code">MCGG_MY_1084</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="1446 (1252+194) Diamonds (MY)" data-price="451745">
+          <span class="item-name">1446 (1252+194) Diamonds (MY)<span class="item-code">MCGG_MY_1446</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="2976 (2501+475) Diamonds (MY)" data-price="903339">
+          <span class="item-name">2976 (2501+475) Diamonds (MY)<span class="item-code">MCGG_MY_2976</span></span>
+          <span class="item-price"></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PHILIPPINES -->
+    <div class="section">
+      <div class="section-title">Philippines</div>
+      <ul class="pricelist">
+        <li data-item="5 Diamonds (PH)" data-price="2476">
+          <span class="item-name">5 Diamonds (PH)<span class="item-code">MCGG_PH_5</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="11 (10+1) Diamonds (PH)" data-price="3361">
+          <span class="item-name">11 (10+1) Diamonds (PH)<span class="item-code">MCGG_PH_11</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="22 (20+2) Diamonds (PH)" data-price="5869">
+          <span class="item-name">22 (20+2) Diamonds (PH)<span class="item-code">MCGG_PH_22</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="56 (51+5) Diamonds (PH)" data-price="13098">
+          <span class="item-name">56 (51+5) Diamonds (PH)<span class="item-code">MCGG_PH_56</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="100 (50+50) Diamonds - First Top Up (PH)" data-price="13836">
+          <span class="item-name">100 (50+50) Diamonds - First Top Up (PH)<span class="item-code">MCGG_PH_100FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="112 (102+10) Diamonds (PH)" data-price="24830">
+          <span class="item-name">112 (102+10) Diamonds (PH)<span class="item-code">MCGG_PH_112</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="300 (150+150) Diamonds - First Top Up (PH)" data-price="38674">
+          <span class="item-name">300 (150+150) Diamonds - First Top Up (PH)<span class="item-code">MCGG_PH_300FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="223 (203+20) Diamonds (PH)" data-price="49510">
+          <span class="item-name">223 (203+20) Diamonds (PH)<span class="item-code">MCGG_PH_223</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="500 (250+250) Diamonds - First Top Up (PH)" data-price="64106">
+          <span class="item-name">500 (250+250) Diamonds - First Top Up (PH)<span class="item-code">MCGG_PH_500FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="336 (303+33) Diamonds (PH)" data-price="74339">
+          <span class="item-name">336 (303+33) Diamonds (PH)<span class="item-code">MCGG_PH_336</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="570 (504+66) Diamonds (PH)" data-price="123847">
+          <span class="item-name">570 (504+66) Diamonds (PH)<span class="item-code">MCGG_PH_570</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="1000 (500+500) Diamonds - First Top Up (PH)" data-price="129866">
+          <span class="item-name">1000 (500+500) Diamonds - First Top Up (PH)<span class="item-code">MCGG_PH_1000FTU</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="1163 (1007+156) Diamonds (PH)" data-price="247843">
+          <span class="item-name">1163 (1007+156) Diamonds (PH)<span class="item-code">MCGG_PH_1163</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="2398 (2015+383) Diamonds (PH)" data-price="495684">
+          <span class="item-name">2398 (2015+383) Diamonds (PH)<span class="item-code">MCGG_PH_2398</span></span>
+          <span class="item-price"></span>
+        </li>
+        <li data-item="6042 (5035+1007) Diamonds (PH)" data-price="1239060">
+          <span class="item-name">6042 (5035+1007) Diamonds (PH)<span class="item-code">MCGG_PH_6042</span></span>
+          <span class="item-price"></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- FORM ORDER -->
+    <div class="section">
+      <div class="section-title">Form Order</div>
+
+      <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+        <label for="userId">User ID:</label>
+        <input
+          type="text"
+          id="userId"
+          placeholder="contoh: 123456789"
+          required
+        />
+
+        <label for="nickname">Nickname in game:</label>
+        <input
+          type="text"
+          id="nickname"
+          placeholder="nickname kamu"
+          required
+        />
+
+        <label for="orderSelect">Order:</label>
+        <select id="orderSelect" required>
+          <option value="" disabled selected>Pilih produk</option>
+
+          <!-- Indonesia -->
+          <option value="100 (50+50) Diamonds - First Top Up (ID)" data-price="14620">100 (50+50) Diamonds - First Top Up (ID)</option>
+          <option value="Weekly Card (ID)" data-price="33780">Weekly Card (ID)</option>
+          <option value="300 (150+150) Diamonds - First Top Up (ID)" data-price="41586">300 (150+150) Diamonds - First Top Up (ID)</option>
+          <option value="500 (250+250) Diamonds - First Top Up (ID)" data-price="69334">500 (250+250) Diamonds - First Top Up (ID)</option>
+          <option value="1000 (500+500) Diamonds - First Top Up (ID)" data-price="139414">1000 (500+500) Diamonds - First Top Up (ID)</option>
+
+          <!-- Malaysia -->
+          <option value="14 (13+1) Diamonds (MY)" data-price="5427">14 (13+1) Diamonds (MY)</option>
+          <option value="42 (38+4) Diamonds (MY)" data-price="14341">42 (38+4) Diamonds (MY)</option>
+          <option value="100 (50+50) Diamonds - First Top Up (MY)" data-price="20556">100 (50+50) Diamonds - First Top Up (MY)</option>
+          <option value="70 (64+6) Diamonds (MY)" data-price="22574">70 (64+6) Diamonds (MY)</option>
+          <option value="Weekly Card (MY)" data-price="31904">Weekly Card (MY)</option>
+          <option value="140 (127+13) Diamonds (MY)" data-price="45145">140 (127+13) Diamonds (MY)</option>
+          <option value="300 (150+150) Diamonds - First Top Up (MY)" data-price="58237">300 (150+150) Diamonds - First Top Up (MY)</option>
+          <option value="314 (254+30) Diamonds (MY)" data-price="90289">314 (254+30) Diamonds (MY)</option>
+          <option value="500 (250+250) Diamonds - First Top Up (MY)" data-price="97212">500 (250+250) Diamonds - First Top Up (MY)</option>
+          <option value="355 (317+38) Diamonds (MY)" data-price="113012">355 (317+38) Diamonds (MY)</option>
+          <option value="429 (383+46) Diamonds (MY)" data-price="135585">429 (383+46) Diamonds (MY)</option>
+          <option value="1000 (500+500) Diamonds - First Top Up (MY)" data-price="194573">1000 (500+500) Diamonds - First Top Up (MY)</option>
+          <option value="716 (633+83) Diamonds (MY)" data-price="225873">716 (633+83) Diamonds (MY)</option>
+          <option value="1084 (940+144) Diamonds (MY)" data-price="338884">1084 (940+144) Diamonds (MY)</option>
+          <option value="1446 (1252+194) Diamonds (MY)" data-price="451745">1446 (1252+194) Diamonds (MY)</option>
+          <option value="2976 (2501+475) Diamonds (MY)" data-price="903339">2976 (2501+475) Diamonds (MY)</option>
+
+          <!-- Philippines -->
+          <option value="5 Diamonds (PH)" data-price="2476">5 Diamonds (PH)</option>
+          <option value="11 (10+1) Diamonds (PH)" data-price="3361">11 (10+1) Diamonds (PH)</option>
+          <option value="22 (20+2) Diamonds (PH)" data-price="5869">22 (20+2) Diamonds (PH)</option>
+          <option value="56 (51+5) Diamonds (PH)" data-price="13098">56 (51+5) Diamonds (PH)</option>
+          <option value="100 (50+50) Diamonds - First Top Up (PH)" data-price="13836">100 (50+50) Diamonds - First Top Up (PH)</option>
+          <option value="112 (102+10) Diamonds (PH)" data-price="24830">112 (102+10) Diamonds (PH)</option>
+          <option value="300 (150+150) Diamonds - First Top Up (PH)" data-price="38674">300 (150+150) Diamonds - First Top Up (PH)</option>
+          <option value="223 (203+20) Diamonds (PH)" data-price="49510">223 (203+20) Diamonds (PH)</option>
+          <option value="500 (250+250) Diamonds - First Top Up (PH)" data-price="64106">500 (250+250) Diamonds - First Top Up (PH)</option>
+          <option value="336 (303+33) Diamonds (PH)" data-price="74339">336 (303+33) Diamonds (PH)</option>
+          <option value="570 (504+66) Diamonds (PH)" data-price="123847">570 (504+66) Diamonds (PH)</option>
+          <option value="1000 (500+500) Diamonds - First Top Up (PH)" data-price="129866">1000 (500+500) Diamonds - First Top Up (PH)</option>
+          <option value="1163 (1007+156) Diamonds (PH)" data-price="247843">1163 (1007+156) Diamonds (PH)</option>
+          <option value="2398 (2015+383) Diamonds (PH)" data-price="495684">2398 (2015+383) Diamonds (PH)</option>
+          <option value="6042 (5035+1007) Diamonds (PH)" data-price="1239060">6042 (5035+1007) Diamonds (PH)</option>
+        </select>
+
+        <label>Jumlah order:</label>
+        <div class="qty-wrapper">
+          <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
+          <input type="number" id="orderQty" value="1" min="1" readonly />
+          <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+
+        <label for="orderPrice">Total Harga:</label>
+        <input
+          type="text"
+          id="orderPrice"
+          placeholder="Rp 0"
+          readonly
+        />
+
+        <button type="submit">Kirim ke WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Format Rp
+    function formatRupiah(value) {
+      var numberString = String(value).replace(/[^0-9]/g, '');
+      if (!numberString) return '';
+      return 'Rp ' + numberString.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function updateTotal() {
+      var select = document.getElementById('orderSelect');
+      var qtyInput = document.getElementById('orderQty');
+      var priceInput = document.getElementById('orderPrice');
+      if (!select || !qtyInput || !priceInput) return;
+
+      var option = select.options[select.selectedIndex];
+      if (!option) { priceInput.value = ''; return; }
+
+      var basePrice = option.getAttribute('data-price');
+      var qty = parseInt(qtyInput.value, 10) || 1;
+
+      var total = (parseInt(basePrice, 10) || 0) * qty;
+      priceInput.value = formatRupiah(total);
+    }
+
+    function changeQty(delta) {
+      var qtyInput = document.getElementById('orderQty');
+      var current = parseInt(qtyInput.value, 10) || 1;
+      current += delta;
+      if (current < 1) current = 1;
+      qtyInput.value = current;
+      updateTotal();
+    }
+
+    // Klik item → pilih otomatis
+    function selectProduct(item) {
+      var select = document.getElementById('orderSelect');
+      var qtyInput = document.getElementById('orderQty');
+
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === item) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+
+      qtyInput.value = 1;
+      updateTotal();
+    }
+
+    // WA
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+
+      var userId = document.getElementById('userId').value.trim();
+      var nickname = document.getElementById('nickname').value.trim();
+      var select = document.getElementById('orderSelect');
+      var qty = document.getElementById('orderQty').value.trim();
+      var price = document.getElementById('orderPrice').value.trim();
+
+      var message =
+        '**Order Magic Chess Go Go**\n' +
+        'User ID: ' + userId + '\n' +
+        'Nickname: ' + nickname + '\n' +
+        'Order: ' + (select.value || '') + '\n' +
+        'Jumlah: x' + qty + '\n' +
+        'Total Harga: ' + price;
+
+      var phone = '6283197962700';
+      window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    // Init harga + klik
+    document.addEventListener('DOMContentLoaded', function () {
+      var items = document.querySelectorAll('.pricelist li');
+
+      items.forEach(function (li) {
+        var price = li.getAttribute('data-price');
+        var item = li.getAttribute('data-item');
+        var priceSpan = li.querySelector('.item-price');
+        if (priceSpan && price) {
+          priceSpan.textContent = formatRupiah(price);
+        }
+
+        li.addEventListener('click', function () {
+          selectProduct(item);
+          var form = document.getElementById('orderForm');
+          if (form) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      var select = document.getElementById('orderSelect');
+      if (select) {
+        select.addEventListener('change', updateTotal);
+      }
+    });
+  </script>
+</body>
+</html>
